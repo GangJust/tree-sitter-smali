@@ -4,9 +4,12 @@
   (annotation_directive)
   (array_data_directive)
   (method_definition)
+  (field_definition)
   (packed_switch_directive)
   (sparse_switch_directive)
   (subannotation_directive)
+  (param_directive)
+  (parameter_directive)
 ] @scope
 
 [
@@ -14,6 +17,8 @@
   (class_identifier)
   (label)
   (jmp_label)
+  (variable)
+  (parameter)
 ] @reference
 
 (enum_reference
@@ -40,3 +45,16 @@
 
 (class_directive
   (class_identifier) @definition.type)
+
+; --- 标签定义（作为语句出现时是定义） ---
+
+(method_definition
+  (label) @definition.label)
+
+(method_definition
+  (jmp_label) @definition.label)
+
+; --- 局部变量定义 ---
+
+(local_directive
+  (identifier) @definition.var)
